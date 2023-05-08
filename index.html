@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- 페이지 디자인의 목적 : 딱딱한 기업 페이지가 아닌 단순하고 지저분한 효과를 페이지에 도배하여
+어른들도 어린이의 마음으로 돌아가게 만들어준다. 투자 정보나 딱딱한 일상에 지친 현대 사회인에게 실소라도 안겨줄 수 있다.
+
+  혹은 페이지의 유치한 효과들을 이용하여 어린이들에게 회사 페이지를 친근하게 느끼게 할 수 있다.
+  그것을 통해 회사 이미지를 더 친근하게 만들 수 있다. 어린이들의 마음에 친근함을 심어야 한다.
+   잠재고객은 어른이 되면 큰 돈이 된다.
+-->
+<body>
+    <header class="header">
+        <div class="header_inner">
+            <div class="header_left"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
+            <div class="header_right">
+                <a href="#none">로그인 &#124;</a>
+                <a href="#none">회원가입 &#124;</a>
+                <a href="#none">이벤트 &#124;</a>
+                <a href="#none">고객센터</a>
+            </div>
+        </div>
+    </header>
+    <nav class="nav">
+        <div class="nav_inner">
+            <ul>
+                <li><a href="#none">회사소개</a></li>
+                <li><a href="#none">브랜드 소개</a></li>
+                <li class="has-submenu"><a href="#none">투자정보</a>
+                    <ul class="submenu">
+                        <li><a href="#none">서브메뉴1</a></li>
+                        <li><a href="#none">서브메뉴2</a></li>
+                        <li><a href="#none">서브메뉴3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#none">ESG경영</a></li>
+                <li><a href="#none">홍보센터</a></li>
+                <li><a href="#none">고객센터</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="main_image"></div>
+        <div class="main_inner">
+            <section class="main_visual">
+                <div class="main_visual_title">
+                    <h2>더 나은 먹거리,<br>더 행복한 삶</h2>
+                </div>
+                <div class="main_visual_button">
+                    <button onclick="startFallingImagesWithMessage();"><u>행복버튼</u></button>
+                </div>     
+                <div class="falling-images-container"></div>    
+                <div id="message"></div>
+
+            </section>
+            <section class="image_banner">
+                <div class="img_banner1"><img src="images/banner_choco.png"
+                        onclick="changeBackground('images/banner_choco.png')" alt=""></div>
+                <div class="img_banner2"><img src="images/banner_ice.png"
+                        onclick="changeBackground('images/banner_ice.png')" alt=""></div>
+                <div class="img_banner3"><img src="images/banner_snack.png"
+                        onclick="changeBackground('images/banner_snack.png')" alt=""></div>
+            </section>
+            <section class="notice">
+                <div class="notice_left">
+                    <h2>NOTICE</h2>
+                    <ul>
+                        <li>
+                            <a class="announce_left" href="#none"><span>Lorem ipsum dolor sit amet.orem ipsum dolor sit
+                                    amet.orem ipsum dolor sit amet.</span></a>
+                            <small class="announce_right">2022-3-3</small>
+                        </li>
+                        <li>
+                            <a class="announce_left" href="#none"><span>orem ipsum dolor sit amet.orem ipsum dolor sit
+                                    amet.</span></a>
+                            <small class="announce_right">2022-3-3</small>
+                        </li>
+                        <li>
+                            <a class="announce_left" href="fakenews.html" target="_blank"><span>!!오레오에
+                                    리튬 성분 검출, 롯데웰푸드 주가 폭등</span></a> <!-- 어른들이 좋아하는 fakeNews 속임수를 넣어준다. 
+                                        어른들에게 장난감과 같은 fake news를 통해, 다시 동심의 재미를 느끼게 한다. -->
+                            <small class="announce_right">2023-5-24</small>
+                        </li>
+                        <li>
+                            <a class="announce_left" href="#none"><span>Lorem ipsum d</span></a>
+                            <small class="announce_right">2022-3-3</small>
+                        </li>
+                        <li>
+                            <a class="announce_left" href="#none"><span>Lorem ipsum orem ipsum dolor sit amet.orem ipsum
+                                    dolor sit amet..</span></a>
+                            <small class="announce_right">2022-3-3</small>
+                        </li>
+                    </ul>
+                </div>
+                <div class="notice_right"> <!-- 돌림판은 transform rotate와, 텍스트 크기, 색깔 변경 효과가 있다 -->
+                    <div class="notice_right_icon">마가렛뜨 돌림판</div>
+                    <div class="notice_right_icon">마가렛뜨 돌림판</div>
+                    <div class="notice_right_icon">마가레트돌림판</div>
+                    <div class="notice_right_icon">마가랬트 돌림판</div>
+                    <div class="notice_right_icon">마가렜트 돌림판</div>
+                    <div class="notice_right_icon">마가랫드 돌림판</div>
+                    <div class="notice_right_icon">마가렜뜨 돌림판</div>
+                    <div class="notice_right_icon">마가레트 돌림판</div>
+                    <div class="notice_right_icon">마가레뜨 돌림판</div>
+                    <div class="notice_right_icon">마가렛트 돌림판</div>
+                </div>
+            </section>
+            <section class="card_banner">
+                <div class="card_banner1"></div> <!-- 1, 2엔 확대 및 그림자 효과가 있다 -->
+                <div class="card_banner2"></div>
+                <div class="card_banner3"></div> <!-- 3, 4의 이미지엔 회사 대표님의 미소가 너무 아름다워 transform rotate로 더욱 주목받게 한다. -->
+                <div class="card_banner4"></div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer_inner1">
+            <div class="footer_nav">
+                <a href="#none">이용약관 &#124;</a>
+                <a href="#none">개인정보처리방침 &#124;</a>
+                <a href="#none">저작권정책 &#124;</a>
+                <a href="#none">찾아오시는 길 &#124;</a>
+                <a href="#none">고객센터 &#124;</a>
+                <a href="#none">홍보동영상</a>
+            </div>
+        </div>
+        <div class="footer_inner2">
+            <div class="footer_copyright">
+                <div class="footer_logoCopy">
+                    <img src="images/logo.png" alt="">
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit, molestiae!<br>
+                        전화 Lorem ipsum dolor sit amet.<br>
+                        카피라이트2022 &copy;롯데
+                    </p>
+                </div>
+                <div class="footer_snsIcon">
+                    <div class="facebook"><a href="https://www.facebook.com/lotteconf" target="_blank"><i class="fa fa-facebook"></i></a></div>
+                    <div class="twitter"><a href="https://twitter.com/hashtag/%EB%A1%AF%EB%8D%B0%EC%9B%B0%ED%91%B8%EB%93%9C?src=hashtag_click" target="_blank"><i class="fa fa-twitter"></i></a></div>
+                    <div class="youtube"><a href="https://www.youtube.com/@LotteCF" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+function changeBackground(imagePath) {
+  const main = document.querySelector('main');
+  if (!main.style.backgroundImage || main.style.backgroundImage === "none") {
+    main.style.backgroundImage = "url('" + imagePath + "')";
+  } else {
+    main.style.backgroundImage = "none";
+  }
+}
+/*  main이라는 HTML 요소의 backgroundImage 스타일 속성(x라고 하겠음)이 
+현재 "none" 이외의 값으로 설정되어 있는지 확인합니다. 
+배경값이 설정되지 않았거나 "none"으로 설정된 경우 코드는 
+x를 imagePath라는 변수로 정의된 새 URL로 설정합니다. 
+반면에 x가 현재 URL로 설정되어 있으면 코드가 "none"으로 변경하여 효과적으로 배경 이미지를 제거합니다.
+즉, 코드는 실행될 때마다 HTML 요소의 배경 이미지를 켜거나 끕니다. 배경 이미지가 설정되어 있지 않으면 추가합니다. 
+배경 이미지가 이미 설정되어 있으면 제거합니다. */
+
+/* 의문점 : main_image를 통해 이미 배경에 좌우로 크게 배경이미지 속성이 적용되고 있는데 위 함수가 어떻게 정상적으로 작동되는가?
+그 이유는 이 함수는 main_image 요소가 아닌 main 요소에 배경 이미지를 설정하고 있기 때문이다.
+main_image 요소에는 배경 속성이 있지만 
+함수는 main 요소의 backgroundImage 속성만 설정하므로 함수의 영향을 받지 않는다. 
+main_image 요소는 단순히 main 요소의 하위 요소이며 상위 요소의 backgroundImage 속성에 영향을 주지 않는다.
+*/
+
+function startFallingImages() {
+  const container = document.querySelector('.falling-images-container');
+  const images = [
+    'images/happy1.png',
+    'images/happy2.png',
+    'images/happy3.png',
+    'images/happy4.png',
+    'images/happy5.png',
+    'images/happy6.png',
+    'images/happy7.png',
+    'images/happy8.png',
+    'images/happy9.png'
+  ];
+
+  for (let i = 0; i < 40; i++) { /* i의 숫자에 따라 최대 이미지가 얼마나 나오는지 수가 정해진다 */
+    const image = document.createElement('img');
+    image.src = images[Math.floor(Math.random() * images.length)];
+    image.classList.add('falling-image');
+    image.style.right = Math.floor(Math.random() * window.innerWidth) + 'px'; 
+    image.style.animationDuration = `${Math.floor(Math.random() * 3) + 1}s`; /* 애니메이션 지속 시간 */
+    image.style.animationDelay = `${Math.floor(Math.random() * 5)}s`; /* 한 뭉탱이 나오기전에 걸리는 시간 */
+    container.appendChild(image);
+  }
+
+  container.addEventListener('animationend', function (event) {
+    event.target.remove();
+    if (container.children.length === 0) {
+      // All falling images have finished their animation
+      const messageElement = document.getElementById("message");
+      messageElement.style.display = "none"; /* 이 none때문에 골치가 아주 아팠다. 영영 none이 돼서
+      버튼을 두번째로 누를 땐 문구가 안 보였기 때문이다. 하지만 버튼을 눌렀을 때 display 속성을 block으로 설정하자
+      none이 사라지고 block 설정이 되어 다시 보였다. */
+    }
+  });
+
+  showMessage();
+}
+
+function startFallingImagesWithMessage() {
+  const messageElement = document.getElementById('message');
+  messageElement.style.display = 'block'; // 블락으로 설정해서 문구가 보이게 한다
+  startFallingImages();
+}
+
+function showMessage() {
+  const messageElement = document.getElementById("message");
+  messageElement.innerHTML = "아이들에게 행복을 전하세요!";
+  messageElement.style.position = "fixed";
+  messageElement.style.top = "50%";
+  messageElement.style.left = "50%";
+  messageElement.style.transform = "translate(-50%, -50%)"; /* 화면 정중앙에 문구 보내기 */
+  messageElement.style.zIndex = "9999"; /* 얘가 제일 앞에 보여야 함 제트 인덱스 풀가동 */
+  messageElement.style.fontSize = "8rem";
+  messageElement.style.color = "red"; 
+  messageElement.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; 
+  messageElement.style.borderRadius = "10px"; 
+  messageElement.style.padding = "20px"; 
+  messageElement.style.animation = "fadeout 4s ease-in-out forwards"; 
+  /* "messageElement"의 CSS "animation" 속성을 "fadeout 4s ease-in-out forwards"로 설정합니다. 
+  이것은 "fadeout"이라는 애니메이션 효과가 요소에 적용되며 "ease-in-out" 타이밍 함수로 4초 동안 지속됩니다.
+   "forwards" 키워드는 요소가 애니메이션의 끝에서 적용된 스타일을 유지할 것을 의미합니다. 
+  이 애니메이션은 메시지 요소가 4초 동안 서서히 사라지고 화면에서 사라지도록 만듭니다. */
+
+  messageElement.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+  messageElement.style.textAlign = "center";
+}
+
+document.querySelector('.main_visual_button button').onclick = startFallingImagesWithMessage;
+/* 위 코드가 있어야 버튼을 클릭했을 때 startFalling Images with message 함수가 실행된다 */
+</script>
+</body>
+
+</html>

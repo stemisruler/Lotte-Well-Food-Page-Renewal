@@ -1,0 +1,404 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+*{padding: 0; margin: 0; box-sizing: border-box;}
+a{text-decoration: none; color: black;}
+ul li{list-style: none;}
+body{
+    width: 1920px; height: 1750px; margin: auto;
+    font-family: Pretendard-Regular;
+}
+
+/* header */
+
+.header_inner, .nav_inner, .main_inner, .footer_inner1, .footer_inner2{
+    width: 1280px;
+    margin: auto;
+}
+.header{
+    height: 90px;
+}
+.header_inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    margin-top: 20px;
+}
+
+.header_inner>.header_right{
+    display: inline-block;
+    line-height: 90px;
+}
+
+.header_inner>.header_right> a{
+    padding: 40px 0; /* 좌우 패딩을 주면 요소간 거리가 멀어지니까, 상하 패딩만 줘서 클릭에 도움을 주겠다 */
+    transition: 0.2s;
+}
+
+.header_inner>.header_right>a:hover{
+    text-shadow: 1px 1px 1px; /* 백그라운드 컬러를 줘보니, 상하 패딩밖에 없어 요소가 너무 못생겨진다. 
+    그러니 그림자로 처리하겠다 */
+}
+/* nav */
+.nav{
+    height: 20px;
+    margin: 30px 0;
+}
+.nav_inner>ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+
+}
+
+.nav_inner>ul>li{
+    text-align: center;
+    display: block;
+    white-space:nowrap; 
+    position: relative;
+    transition: 0.5s;
+    
+}
+
+.nav_inner>ul>li:hover{
+    background-color: gray;
+}
+
+.nav_inner>ul>li>a{
+    display: block;
+    padding: 30px 70px;
+}
+
+.submenu {
+    opacity: 0; /* display none을 사용하면 transition 적용이 안되니까 opacity로 submenu를 만든다. */
+    position: absolute; 
+    top: 100%;
+    left: 0;  /* 상위 relatvie 요소 맨아래에서 시작하겠다는 뜻 */
+    width: 100%; /* 상위 요소의 길이에 맞추겠다 */
+    z-index: 999;
+    opacity: 0;
+    transition: 0.5s;
+  }
+.has-submenu:hover .submenu {
+    opacity: 1;
+    background-color: white;
+  }
+.submenu>li{
+    border-bottom: 1px solid black;
+    padding: 10px;
+  }
+.submenu > li > a {
+    padding: 10px 60px; /* 서브 메뉴를 클릭할 때 후하게 클릭하게 해주겠다 */
+  }
+  
+/* main */
+.main{
+    position: relative;
+}
+.main_image{
+    width: 1920px;
+    height: 390px;
+    background-image: url(images/main.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10%;
+
+}
+
+.main_visual{
+    height: inherit;
+    margin-bottom: 30px;
+}
+
+.main_visual_title{
+    position:absolute;
+    top: 10%;
+    left: 38%;
+    color: white;
+    font-size: 2rem;
+    background-color: rgba(240, 255, 255, 0.438);
+}
+
+.main_visual_button{
+    position:absolute;
+    top: 20%;
+    right: 25%;
+}
+
+/* 위의 두 absolute 요소는 main이 아닌 main image 요소에는 relative를 줬을시
+페이지를 확대/축소하거나 창을 늘이고 줄였을 때 위치가 변하는 문제가 있었다. 하지만 main에 relative를 주니
+absolute의 위아래 범위가 상당히 넓어지긴 했지만 창을 확대 축소하거나 길이를 변경해도 위치가 고정되는 걸 확인했다. */
+
+/* 검색해보니 이미지의 크기가 화면 크기에 따라 늘어나고 줄어들 수가 있어서 그 크기 변경에 따라 absolute 요소의 위치가
+변한게 아니냐는 얘기가 있다. 질문을 해봐야겠다. */
+
+.main_visual_button>button{
+    width: 140px;
+    height: 70px;
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    border-radius: 35px;
+    cursor: pointer;
+}
+/* 페이지가 너무 밋밋하니까 버튼을 누르면 롯데 과자들이 화면에서 떨어지는 효과를 넣어보자 */
+
+.falling-images-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  
+  .falling-image {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    animation: fall 2s linear forwards, fall-rotate 1s 1s linear infinite;
+  }
+
+  /* "fall"은 애니메이션의 이름입니다. "3s"는 애니메이션 지속 시간이며,
+   "linear"는 애니메이션의 타이밍 함수입니다. "forwards"는 애니메이션이 끝난 후에도 
+   마지막 상태를 유지하도록 지정하는 옵션입니다.
+
+두 번째 애니메이션 "fall-rotate"는 이름이며, 
+"1s"는 애니메이션 지속 시간이며, "1s"는 애니메이션 시작 지연 시간입니다. 
+"linear"는 애니메이션의 타이밍 함수이며, "infinite"는 애니메이션을 무한 반복하도록 지정하는 옵션입니다.
+
+ */
+  
+  @keyframes fall {
+    from {
+      transform: translateY(-100px);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fall-rotate {
+    0% {
+      transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+
+/* image_banner */
+.image_banner{
+    display: flex;
+    justify-content: space-between;
+    height: 220px;
+    margin-bottom: 30px;
+}
+
+.img_banner1>img, .img_banner2>img, .img_banner3>img{
+    width: calc(1000px/3);
+    height: 220px;
+    transition: 0.2s;
+}
+
+.img_banner>img{
+    margin: 10px;
+}
+
+.img_banner1>img:hover, .img_banner2>img:hover, .img_banner3>img:hover{
+    background-color: violet;
+    cursor:all-scroll;  /* 현재 클릭하려는 이미지를 클릭할 시 사방으로 확장된다는 기능임을 나타내고 싶었다. */
+
+}
+/* notice */
+.notice{
+    border-top: gray 0.2rem dotted; /* section간 구분을 위해 dotted border를 넣었다 */
+    height: 330px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.notice_left{
+    align-self: flex-end;
+    width: 420px;
+    height: 300px;
+    font-size: 23px;
+}
+
+.notice_left>h2{
+    margin-left: 0;
+    margin-bottom:20px;
+}
+
+.notice_left>ul{
+    overflow: hidden;
+}
+
+.notice_left>ul>li{
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+    padding: 10px 0px 5px 0px;
+    transition: 0.2s;
+}
+
+.notice_left>ul>li:hover{
+    background-color: aqua;
+}
+.notice_left>ul>li:nth-child(3):hover{
+    background-color: red;
+}
+
+.announce_left>span{ 
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    font-size: 1rem;
+}
+
+.announce_right{
+    float: right;
+    font-size: 0.8rem;
+}
+.notice_right{
+    width: 800px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notice_right>.notice_right_icon{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-image: url(images/banner_snack.png);
+    background-size: contain;
+    text-align: center;
+    line-height: 150px;
+    color: blue;
+    background-color: red;
+    transition: 1.2s;
+}
+
+.notice_right>.notice_right_icon:hover{
+    font-size: 100px;
+    transform: rotate(360deg);
+    color: red;
+    font-weight: bold;
+}
+/* card_banner */
+.card_banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 460px;
+    border-top: gray 0.2rem dotted;
+}
+
+.card_banner1, .card_banner2,
+.card_banner3, .card_banner4 {
+    height: 400px;
+    width: calc(1000px/4);
+    border: 1px solid #000;
+    border-radius: 5%;
+    background-size: cover;
+    background-position: center;
+    transition: 0.2s;
+
+    /* 아 네모칸 만들어서 둥근 모서리 만들고 그 안에 백그라운드 이미지로 넣어야할듯\
+이미지가 화면에 다 안 나오니, 마우스를 대면 전체 이미지를 볼 수 있도록 축소시키는 호버를 넣어보자 */
+}
+
+.card_banner1{background-image: url(images/card_busan.jpg);}
+.card_banner2{background-image: url(images/card_stock.jpg);}
+.card_banner3{background-image: url(images/card_re100.jpg);}
+.card_banner4{background-image: url(images/card_partner.jpg);}
+
+.card_banner1:hover{transform: scale(2); box-shadow: 3px 3px 3px;}
+.card_banner2:hover{transform: scale(2); box-shadow: 3px 3px 3px;}
+.card_banner3:hover{transform: rotate(360deg) scale(2); box-shadow: 3px 3px 3px;}
+.card_banner4:hover{transform: rotate(360deg) scale(2); box-shadow: 3px 3px 3px;}
+
+/* footer */
+.footer{
+    background-color: black;
+    color: white;
+}
+.footer_inner1{
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.footer_nav>a{
+    color: white;
+}
+.footer_inner2{
+    height: 140px;
+}
+
+.footer_copyright{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_logoCopy{
+    display: flex;
+}
+
+.footer_logoCopy>p{
+    margin-left: 10px;
+    font-size: 0.8rem;
+}
+.facebook, .twitter, .youtube{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+}
+
+.facebook {
+    background-color: #3b5998;
+  }
+.twitter {
+    background-color: #00aced;
+  }
+.youtube {
+    background-color: #ff0000;
+  }
+  
+.facebook>a, .twitter>a, .youtube>a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    color: white;
+  }
